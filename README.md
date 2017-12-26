@@ -12,7 +12,7 @@
 
 ## 使用
 ```
-安装模块：npm install  
+安装模块：yarn install 或者 npm install(建议使用cnpm)
 
 开发模式：npm start  
 
