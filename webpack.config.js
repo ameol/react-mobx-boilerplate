@@ -19,16 +19,6 @@ module.exports = {
         publicPath: "/",
         historyApiFallback: true,
         disableHostCheck: true
-        /* 
-            //用于接口地址重写
-            proxy: {
-            '/api/': {
-                target: 'http://localhost:9999',
-                secure: false,
-                changeOrigin: true,
-                pathRewrite: {'^/api': ''}
-            }
-        } */
     },
     output: {
         path: path.join(__dirname, "dist"),

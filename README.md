@@ -21,7 +21,7 @@
 访问地址：http://localhost:3000
 ```
 ## 部署
-nginx主要配置，网上都有哈哈
+nginx主要配置，一般网上都能查到
 ```
 location / {
 	root   html;
