@@ -40,14 +40,14 @@ module.exports = {
             {
                 test: /\.less|css$/i,
                 use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        "css-loader",
-                        "postcss-loader",
-                        "resolve-url-loader",
-                        'less-loader?{"sourceMap":true}'
-                    ]
-                })
+                  fallback: "style-loader",
+                  use: [
+                      'css-loader',
+                      'postcss-loader?{"sourceMap":true}',
+                      'resolve-url-loader',
+                      'less-loader?{"sourceMap":true}'
+                  ]
+              })
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,

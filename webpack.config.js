@@ -46,10 +46,10 @@ module.exports = {
             {
                 test: /\.less|css$/,
                 use: [
-                    "style-loader",
-                    "css-loader",
-                    "postcss-loader",
-                    "resolve-url-loader",
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader?{"sourceMap":true}',
+                    'resolve-url-loader',
                     'less-loader?{"sourceMap":true}'
                 ]
             },
