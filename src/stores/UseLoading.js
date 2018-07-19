@@ -1,6 +1,6 @@
 import { observable, action } from "mobx";
 
-const createLoadingState = (targetClass, ...args) => {
+const createLoadingState = (targetClass, ...functionNames) => {
   class BaseLoading extends targetClass {
     @observable loading = false;
     @observable loadingEffect = {};
@@ -18,12 +18,12 @@ const createLoadingState = (targetClass, ...args) => {
 
   const superProto = Reflect.getPrototypeOf(BaseLoading).prototype;
   let funcs = {};
-  args.map(funcName => {
+  functionNames.map(funcName => {
     const func = superProto[funcName];
     if(typeof func !== 'function') return;
-    funcs[funcName] = async function(){
+    funcs[funcName] = async function(...args){
       this.setLoading(true, funcName);
-      await superProto[funcName].apply(this, arguments);
+      await superProto[funcName].apply(this, args);
       this.setLoading(false, funcName);
     }
   })
@@ -33,11 +33,8 @@ const createLoadingState = (targetClass, ...args) => {
 }
 
 /*需要进行loading的函数名，例如：func1,func2,func3*/
-export default (...arg) => {
+export default (...functionNames) => {
   return (targetClass) => {
-    return createLoadingState(targetClass, ...arg);
+    return createLoadingState(targetClass, ...functionNames);
   }
 }
-
-
-
